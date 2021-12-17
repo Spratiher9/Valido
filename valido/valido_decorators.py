@@ -116,6 +116,7 @@ def df_log(name: Optional[str] = None, include_dtypes: bool = False) -> Callable
     Logs the columns of the consumed and/or produced DataFrame.
 
     Args:
+        name (str,optional): When more than one parameters is taken in as input specify the parameter which is the dataframe.
         include_dtypes (bool, optional): When set to True, will log also the dtypes of each column. Defaults to False.
 
     Returns:
