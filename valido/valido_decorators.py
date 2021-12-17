@@ -1,6 +1,5 @@
 """Decorators for VALIDO DataFrame Column Validator."""
 
-import logging
 from functools import wraps
 from typing import Any, Callable, Dict, List, Optional, Union
 
