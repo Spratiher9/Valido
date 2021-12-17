@@ -18,7 +18,7 @@ def _check_columns(df: DataFrame, columns: ColumnsDef, strict: bool) -> None:
         for column, dtype in columns.items():
             assert column in df.columns, f"Column {column} missing from DataFrame. Got {_describe_df(df)}"
             assert (
-                    col_dtype_dict[column] == dtype
+                    col_dtype_dict[column].lower() == dtype.lower()
             ), f"Column {column} has wrong dtype. Was {col_dtype_dict[column]}, expected {dtype}"
     if strict:
         assert len(df.columns) == len(
