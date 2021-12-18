@@ -1,13 +1,15 @@
 <a href="https://ibb.co/gZdDQ7S"><img src="https://i.ibb.co/d4tQXcP/Valido.png" alt="Valido" border="0"></a>
 
-# Valido 🌩
+# Valido 🌩  
 
-PySpark ⚡ dataframe workflow ⚒ validator
+PySpark ⚡ dataframe workflow ⚒ validator. 
 
 ![PyPI](https://img.shields.io/pypi/v/valido)
 ![PyPI - Python Version](https://img.shields.io/pypi/pyversions/valido)
 ![test](https://github.com/Spratiher9/Valido/workflows/Valido/badge.svg)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
+
+`Hit that ⭐ if you like the project and follow for more such powerful utilities`
 
 ## Description
 
