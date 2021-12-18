@@ -141,6 +141,8 @@ or with `@df_log(include_dtypes=True)` you get:
 Function filter_cars parameters contained a DataFrame: columns: ['Brand', 'Price'] with dtypes ['object', 'int64']
 Function filter_cars returned a DataFrame: columns: ['Brand', 'Price'] with dtypes ['object', 'int64']
 ```
+_Note_:
+    `@df_log(include_dtypes=True)` also takes the `name` parameter like `df_in` for the multi-param functions validation  
 
 ## Contributing
 
