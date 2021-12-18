@@ -1,4 +1,7 @@
+<a href="https://ibb.co/gZdDQ7S"><img src="https://i.ibb.co/d4tQXcP/Valido.png" alt="Valido" border="0"></a>
+
 # Valido 🌩
+
 PySpark ⚡ dataframe workflow ⚒ validator
 
 ![PyPI](https://img.shields.io/pypi/v/valido)
@@ -6,17 +9,18 @@ PySpark ⚡ dataframe workflow ⚒ validator
 ![test](https://github.com/Spratiher9/Valido/workflows/Valido/badge.svg)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 
-## Description 
+## Description
 
-In projects using PySpark, it's very common to have functions that take Spark DataFrames as input or produce them as output.
-It's hard to figure out quickly what these DataFrames contain. This library offers simple decorators to annotate your functions
-so that they document themselves and that documentation is kept up-to-date by validating the input and output on runtime.
+In projects using PySpark, it's very common to have functions that take Spark DataFrames as input or produce them as
+output. It's hard to figure out quickly what these DataFrames contain. This library offers simple decorators to annotate
+your functions so that they document themselves and that documentation is kept up-to-date by validating the input and
+output on runtime.
 
 For example,
 
 ```python
-@df_in(columns=["Brand", "Price"])     # the function expects a DataFrame as input parameter with columns Brand and Price
-@df_out(columns=["Brand", "Price"])    # the function will return a DataFrame with columns Brand and Price
+@df_in(columns=["Brand", "Price"])  # the function expects a DataFrame as input parameter with columns Brand and Price
+@df_out(columns=["Brand", "Price"])  # the function will return a DataFrame with columns Brand and Price
 def filter_cars(car_df):
     # before this code is executed, the input DataFrame is validated according to the above decorator
     # filter some cars..
@@ -24,6 +28,7 @@ def filter_cars(car_df):
 ```
 
 ## Table of Contents
+
 * [Installation](#installation)
 * [Usage](#usage)
 * [Contributing](#contributing)
@@ -38,7 +43,7 @@ Install with your favorite Python dependency manager (_pip_) like
 pip install valido
 ```
 
-## Usage 
+## Usage
 
 Start by importing the needed decorators:
 
@@ -46,13 +51,13 @@ Start by importing the needed decorators:
 from valido import df_in, df_out
 ```
 
-To check a DataFrame input to a function, annotate the function with `@df_in`. For example the following function expects to get
-a DataFrame with columns `Brand` and `Price`:
+To check a DataFrame input to a function, annotate the function with `@df_in`. For example the following function
+expects to get a DataFrame with columns `Brand` and `Price`:
 
 ```python
 @df_in(columns=["Brand", "Price"])
 def process_cars(car_df):
-    # do stuff with cars
+# do stuff with cars
 ```
 
 If your function takes multiple arguments, specify the field to be checked with it's `name`:
@@ -60,13 +65,14 @@ If your function takes multiple arguments, specify the field to be checked with 
 ```python
 @df_in(name="car_df", columns=["Brand", "Price"])
 def process_cars(year, style, car_df):
-    # do stuff with cars
+# do stuff with cars
 ```
+
 _Note:_
 Since this will evaluate it at runtime please use named arguments in the function call like this:
-    ```
-    process_cars(year = 2021, style = "Mazda", car_df = mydf) 
-    ```
+```
+process_cars(year = 2021, style = "Mazda", car_df = mydf)
+```
 
 To check that a function returns a DataFrame with specific columns, use `@df_out` decorator:
 
@@ -96,17 +102,17 @@ def filter_cars(car_df):
 If you want to also check the data types of each column, you can replace the column array:
 
 ```python
-columns=["Brand", "Price"]
+columns = ["Brand", "Price"]
 ```
 
 with a dict:
 
 ```python
-columns={"Brand": "string", "Price": "int"}
+columns = {"Brand": "string", "Price": "int"}
 ```
 
-This will not only check that the specified columns are found from the DataFrame but also that their `dtype` is the expected.
-In case of a wrong `dtype`, an error message similar to following will explain the mismatch:
+This will not only check that the specified columns are found from the DataFrame but also that their `dtype` is the
+expected. In case of a wrong `dtype`, an error message similar to following will explain the mismatch:
 
 ```shell
 AssertionError("Column Price has wrong dtype. Was int, expected double")
@@ -118,7 +124,7 @@ not defined in the annotation:
 ```python
 @df_in(columns=["Brand"], strict=True)
 def process_cars(car_df):
-    # do stuff with cars
+# do stuff with cars
 ```
 
 will raise an error when `car_df` contains columns `["Brand", "Price"]`:
@@ -127,8 +133,8 @@ will raise an error when `car_df` contains columns `["Brand", "Price"]`:
 AssertionError: DataFrame contained unexpected column(s): Price
 ```
 
-To quickly check what the incoming and outgoing dataframes contain, you can add a `@df_log` annotation to the function. For
-example adding `@df_log` to the above `filter_cars` function will product log lines:
+To quickly check what the incoming and outgoing dataframes contain, you can add a `@df_log` annotation to the function.
+For example adding `@df_log` to the above `filter_cars` function will product log lines:
 
 ```shell
 Function filter_cars parameters contained a DataFrame: columns: ['Brand', 'Price']
@@ -141,8 +147,9 @@ or with `@df_log(include_dtypes=True)` you get:
 Function filter_cars parameters contained a DataFrame: columns: ['Brand', 'Price'] with dtypes ['object', 'int64']
 Function filter_cars returned a DataFrame: columns: ['Brand', 'Price'] with dtypes ['object', 'int64']
 ```
+
 _Note_:
-    `@df_log(include_dtypes=True)` also takes the `name` parameter like `df_in` for the multi-param functions validation  
+`@df_log(include_dtypes=True)` also takes the `name` parameter like `df_in` for the multi-param functions validation
 
 ## Contributing
 
