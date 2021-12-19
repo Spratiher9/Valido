@@ -146,8 +146,8 @@ Function filter_cars returned a DataFrame: columns: ['Brand', 'Price']
 or with `@df_log(include_dtypes=True)` you get:
 
 ```shell
-Function filter_cars parameters contained a DataFrame: columns: ['Brand', 'Price'] with dtypes ['object', 'int64']
-Function filter_cars returned a DataFrame: columns: ['Brand', 'Price'] with dtypes ['object', 'int64']
+Function filter_cars parameters contained a DataFrame: columns: ['Brand', 'Price'] with dtypes ['string', 'int']
+Function filter_cars returned a DataFrame: columns: ['Brand', 'Price'] with dtypes ['string', 'int']
 ```
 
 _Note_:
